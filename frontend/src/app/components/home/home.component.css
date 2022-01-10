@@ -1,0 +1,29 @@
+.cardTxt {
+  font-family: monospace;
+  font-size: 18px;
+}
+
+.cardBG{
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.size{
+  font-size: 75px;
+
+}
+
+
+:root{
+  --pink: #EF3C82;
+  --white: white;
+  --black: black;
+  --red: #E74C3C;
+  --blue: #3498DB;
+  --purple: #9B59B6;
+  --yellow: #FEB506;
+  --green: #62CB31;
+}
+

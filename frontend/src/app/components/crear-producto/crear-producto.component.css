@@ -1,0 +1,11 @@
+.text-danger{
+    text-align: start;
+    margin-left: 7px;
+}
+
+.label{
+    font-size: 25px; 
+    color: white;
+    display: flex;
+    justify-content: left;
+}

@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/home" style="color: white">Infinity Games</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div
+        class="navbar-nav ml-auto"
+        *ngIf="!authService.loggedIn(); else loggedIn"
+      >
+        <a
+          class="nav-link btn-item btn-ghost green secundary round mr-4"
+          style="cursor: pointer"
+          href="/signin"
+        >
+          Iniciar Sesión
+        </a>
+        <a
+          class="nav-link btn-item btn-ghost blue secundary round"
+          style="cursor: pointer"
+          href="/signup"
+        >
+          Registrarse
+        </a>
+      </div>
+      <ng-template #loggedIn>
+        <!--Aqui tiene que ir la validacion de rol-->
+        <div class="navbar-nav ml-auto">
+          <div class="d-flex flex-row">
+            <div *ngIf="roleType()" class="dropdown show mr-4">
+              <a
+                class="btn-item btn-ghost white secundary round dropdown-toggle"
+                href="#"
+                style="text-decoration: none"
+                role="button"
+                id="dropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Administrar
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/listar">Productos</a>
+                <a class="dropdown-item" href="/listarUsers">Usuarios</a>
+              </div>
+            </div>
+            <!--
+            <div>
+              <button class="btn-item btn-ghost white secundary round mr-4">
+                <img
+                  src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                  alt=""
+                  width="25px"
+                />
+                Juan Camilo
+              </button>
+            </div>
+-->
+            <div>
+              <button
+                class="nav-link btn-item btn-ghost red secundary round mr-3"
+                style="cursor: pointer"
+                (click)="authService.logout()"
+              >
+                Cerrar Sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</nav>

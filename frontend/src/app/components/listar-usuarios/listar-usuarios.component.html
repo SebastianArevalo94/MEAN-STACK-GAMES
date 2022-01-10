@@ -1,0 +1,46 @@
+<div class="container mt-5 animate__animated animate__fadeInDown">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div
+          class="card-body text-center bg-dark text-white border border-light"
+        >
+          <span class="titulo"
+            >LISTADO DE USUARIOS<i class="fas fa-users" style="margin-left: 15px;"></i>
+          </span>
+          <button class="btn btn-success ml-5" routerLink="/update">
+            Nuevo
+          </button>
+          <table class="table table-dark table-striped mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contraseña</th>
+                <th scope="col">Rol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of listUsers">
+                <img src="{{ user.file }}" alt="Imagen de Perfil" width="100" class="m-2">
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+                <ng-container *ngIf="user.role == 1; else elseBlock">
+                  <td class="text-success">Administrador</td>
+                </ng-container>
+                <ng-template #elseBlock>
+                  <td class="text-primary">Cliente</td>
+                </ng-template>
+
+                <td>
+                  <i [routerLink]="['/update', user._id]" class="fas fa-edit text-primary mr-1"></i>
+                  <i (click)="deleteUser(user._id)" class="fas fa-trash-alt text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

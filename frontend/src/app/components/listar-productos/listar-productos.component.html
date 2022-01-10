@@ -1,0 +1,81 @@
+<div class="container mt-5 mb-5 animate__animated animate__fadeInDown">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div
+          class="card-body text-center bg-dark text-white border border-light"
+        >
+          <span class="titulo"
+            >LISTADO DE JUEGOS<i
+              class="fas fa-gamepad"
+              style="margin-left: 15px"
+            ></i>
+          </span>
+
+          <button class="btn btn-secondary ml-5" routerLink="/crear">
+            Nuevo
+          </button>
+          <table
+            *ngIf="listJuegos.length > 0"
+            class="table table-dark table-striped mt-3"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Clasificación</th>
+                <th scope="col">Género</th>
+                <th scope="col">Plataforma</th>
+                <th scope="col">Precio</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let juego of listJuegos">
+                <img src="{{ juego.file }}" alt="" width="100" class="m-2" />
+                <td>{{ juego.nombre }}</td>
+                <td>{{ juego.clasificacion }}</td>
+                <td>{{ juego.genero }}</td>
+                <td *ngIf="juego.plataforma === 'Android'; else elseBlock1">
+                  <i class="fas2 fab fa-android text-success"></i
+                  >{{ juego.plataforma }}
+                </td>
+                <ng-template #elseBlock1>
+                  <td>
+                    <i class="fas2 fab fa-playstation text-white"></i
+                    >{{ juego.plataforma }}
+                  </td>
+                </ng-template>
+                <td
+                  *ngIf="juego.precio > 0; else elseBlock2"
+                  class="text-primary"
+                >
+                  {{ juego.precio | currency: "USD" }}
+                </td>
+                <ng-template #elseBlock2>
+                  <td class="text-success">Gratis</td>
+                </ng-template>
+                <td>
+                  <i
+                    [routerLink]="['/editar', juego._id]"
+                    class="fas fa-edit text-primary"
+                  ></i>
+                  <i
+                    (click)="eliminarJuego(juego._id)"
+                    class="fas fa-trash-alt text-danger"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+            <h5
+              style="text-align: center; margin-top: 10px"
+              *ngIf="listJuegos.length == 0"
+            >
+              No hay productos para mostrar.
+            </h5>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
